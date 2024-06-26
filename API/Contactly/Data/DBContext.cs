@@ -6,14 +6,14 @@ namespace Contactly.Data
 {
     public class DBContext : DbContext
     {
-        public DbSet<Contact> contact;
+        public DbSet<Contact> contact { get; set; }
+        public DBContext(DbContextOptions options) : base(options)
+        {
 
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Contact>().
-                Property(b => b.Name).IsRequired();
-
-            modelBuilder.Entity<Contact>().Property(b => b.Phone).IsRequired();
+            new ContactConfig().Configure(modelBuilder.Entity<Contact>());
         }
     }
 }

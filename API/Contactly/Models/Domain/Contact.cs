@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.ComponentModel.DataAnnotations;
 
 namespace Contactly.Models.Domain
 {
@@ -9,10 +10,10 @@ namespace Contactly.Models.Domain
         //[Required]
 
         //public required string name {  get; set; } //not availabe in C#10
-        public string Name {  get; set; }
+        public string Name {  get; set; } = string.Empty;
         public string? Email { get; set; } //? allows nullable
 
-        public string Phone { get; set; }
+        public string Phone { get; set; } = string.Empty;
 
         public bool Favourite { get; set; }
     }
