@@ -1,0 +1,9 @@
+<h1>Welcome to TODO List</h1>
+
+<ul *ngFor = "let x of todo">
+    <li>{{x.sno}} - {{x.title}} - {{x.description}}</li>
+</ul>
+
+<div *ngFor = "let x of todo">
+    <app-todo-item [todo] = "x"></app-todo-item>
+</div>
