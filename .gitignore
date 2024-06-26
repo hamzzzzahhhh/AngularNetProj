@@ -1,0 +1,37 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ASP.NET
+*.dbmdl
+*.log
+*.ldf
+*.ndf
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+*.Generated.cs
+
+# Build results
+[Bb]in/
+[Dd]ebug/
+[Rr]elease/
+[Xx]64/
+[Xx]86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+_build/
+[Ww][Ii][Nn]/
+[Uu]nity[Oo]utput/
+
+# Others
+*.vsidx
