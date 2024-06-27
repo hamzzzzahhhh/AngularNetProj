@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xgInKc0ZtZM=",
+  "dgSpecHash": "VUFx9Dq0mxo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\DELL\\AngularNET\\API\\Contactly\\Contactly.csproj",
+  "projectFilePath": "E:\\A1\\cwh-to-list\\src\\API\\Contactly\\Contactly.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\azure.identity\\1.11.3\\azure.identity.1.11.3.nupkg.sha512",

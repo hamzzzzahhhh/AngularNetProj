@@ -35,8 +35,8 @@
     <app-todo></app-todo>
 </div> -->
 
-<div class="flex h-screen ">
-  <div class="w-[50%]">
+<div class="flex h-screen">
+  <div class="w-[50%] bg-black text-white">
     <form (ngSubmit)="onFormSubmit()" [formGroup]="contactForm" class="px-10">
       <h1 class="py-10 font-extrabold text ">
         Contactly
@@ -44,40 +44,47 @@
 
       <div class="mt-2">
         <label for="name" class="font-bold">Name</label>
-        <input type="text" class="w-full p-2 border-2 rounded-sm mt-2" formControlName="email">
+        <input type="text" class="w-full p-2 border-2 rounded-sm mt-2 text-black" formControlName="name">
       </div>
 
       
       <div class="mt-2">
         <label for="email" class="font-bold">Email</label>
-        <input type="email" class="w-full p-2 border-2 rounded-sm mt-2" formControlName="name">
+        <input type="email" class="w-full p-2 border-2 rounded-sm mt-2 text-black" formControlName="email">
       </div> 
 
       
       <div class="mt-2">
         <label for="phone" class="font-bold">Phone Number</label>
-        <input type="text" class="w-full p-2 border-2 rounded-sm mt-2" formControlName="phone">
+        <input type="text" class="w-full p-2 border-2 rounded-sm mt-2 text-black" formControlName="phone">
       </div>
 
       
       <div class="mt-2">
         <label for="favorite" class="flex item-center font-bold">Favprite</label>
-        <input type="checkbox" formControlName="favorite" class="h-4 w-4">
+        <input type="checkbox" formControlName="favorite" class="h-4 w-4 text-black">
         <span>Favorite</span>
       </div>
 
+      <div>
+        <button type="button" class="bg-green-500 text-white px-4 py-2 rounded-sm w-full" (click)="generateRandomNumber()">
+          Generate random number
+        </button>
+        <p>The generated random number is {{randomNumber}}: </p>
+      </div>
+
       <div class="my-2">
-        <button type="submit" class="bg-slate-800 text-white px-4 py-2 rounded-sm w-full">Add</button>
+        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-sm w-full">Add</button>
       </div>
     </form>
   </div>
 <!-- ----------------------- -->
-  <div class="overflow-auto w-[50%]">
+  <div class="overflow-auto w-[50%] cursor-pointer">
     <div *ngIf="contact$ | async as contacts">
       <div *ngIf="contacts.length > 0; else noContacts">
         <div *ngFor="let item of contacts">
           <ul>
-            <li class="p-2 bg-slate-100 border-b-2 border-slate-200">
+            <li class="p-2 bg-slate-100 border-b-2 border-slate-700">
               <p class="font-light text-3xl">{{ item.name }}</p>
 
               <div class="flex gap-10 mt-4">

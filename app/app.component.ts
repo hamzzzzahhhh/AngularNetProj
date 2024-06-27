@@ -17,6 +17,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 export class AppComponent {
 
   http = inject(HttpClient);
+  randomNumber: number = 0;
 
   contactForm = new FormGroup({
     name: new FormControl<string>(''),
@@ -61,6 +62,15 @@ export class AppComponent {
   private async getContacts(): Promise<contact[]> {
     var item = await firstValueFrom(this.http.get<contact[]>('https://localhost:7278/api/Contacts'));
     return item;
+  }
+
+  generateRandomNumber() {
+    console.log("Hi");
+    this.http.get<any>('https://localhost:7278/api/Contacts/xyz').subscribe(
+      (val) => {
+        this.randomNumber = val;
+      }
+    );
   }
 }
 
