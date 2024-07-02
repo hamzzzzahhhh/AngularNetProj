@@ -19,7 +19,8 @@ export class AppComponent {
   http = inject(HttpClient);
   randomNumber: number = 0;
 
-  contactForm = new FormGroup({
+  public contactForm = new FormGroup({
+    id: new FormControl<string>(''),
     name: new FormControl<string>(''),
     email: new FormControl<string>(''),
     phone: new FormControl<string>(''),
@@ -40,14 +41,19 @@ export class AppComponent {
       {
         next: (value) => {
           console.log(value)
-          this.contact$ = this.getContacts();
-          this.contactForm.reset();
+          // this.contact$ = this.getContacts();
+          // this.contactForm.reset();
         }
       });
   }
 
+  clickonUpdate(id: string) {
+
+    this.getOneContact(id);
+  }
+
   onDelete(id: string) {
-    this.http.delete(`https://localhost:7278/api/Contacts/${id}`).subscribe(
+    this.http.delete(`https://localhost:7278/api/Contacts/DeleteContact/${id}`).subscribe(
       {
         next: (value) => {
           alert("Item deleted successfully");
@@ -55,6 +61,44 @@ export class AppComponent {
           this.contact$ = this.getContacts();
         }
       });
+  }
+
+  public update() {
+
+    const addContactRequest = {          //now we have the request obect ready
+      name: this.contactForm.value.name,
+      email: this.contactForm.value.email,
+      phone: this.contactForm.value.phone
+    }
+
+    let id_ = this.contactForm.value.id;
+
+    console.log("Hi");
+
+    console.log(id_);
+
+    this.http.put(`https://localhost:7278/api/Contacts/PutContact/${id_}`, addContactRequest).subscribe({
+      next: (value) => {
+        console.log(value);
+        this.contact$ = this.getContacts();
+        this.contactForm.reset();
+      }
+    });
+
+  }
+
+  public getOneContact(id: string) {
+    this.http.get<contact>(`https://localhost:7278/api/Contacts/GetContact/${id}`).subscribe({
+      next: (value) => {
+
+        this.contactForm.patchValue({
+          name: value.name,
+          email: value.email,
+          phone: value.phone,
+          id: value.id
+        });
+      }
+    })
   }
 
   contact$ = this.getContacts();
